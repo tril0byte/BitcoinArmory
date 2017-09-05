@@ -253,6 +253,9 @@ class ArmoryMainWindow(QMainWindow):
       armoryengine.ArmoryUtils.DEFAULT_ADDR_TYPE = \
          self.getSettingOrSetDefault('Default_ReceiveType', 'P2PKH')
 
+      # Allow creation of segwit addresses offline
+      if CLI_OPTIONS.offline:
+         armoryengine.ArmoryUtils.WITNESS = True
 
       if not self.abortLoad:
          self.acquireProcessMutex()
